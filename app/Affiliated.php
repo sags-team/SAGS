@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Affiliated extends Model
 {
     protected $table = 'affiliates';
-    protected $fillable = ['name', 'cpf', 'sex', 'email'];
+    protected $fillable = ['name', 'cpf', 'sex', 'email', 'siape', 'rg', 'maritalStat', 'educationDegree', 'workDegree', 'contribution'];
     protected $dates = ['created_at', 'updated_at'];
 
     public function branch(){

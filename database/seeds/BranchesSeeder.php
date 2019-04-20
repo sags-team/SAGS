@@ -3,6 +3,7 @@
 use Illuminate\Database\Seeder;
 use App\Branch;
 use App\Address;
+use App\Telephone;
 
 class BranchesSeeder extends Seeder
 {
@@ -25,6 +26,10 @@ class BranchesSeeder extends Seeder
         $address1->complement = '';
         $address1->street = 'Av. prof. Moraes Rego';
         Branch::find(1)->address()->save($address1);
+        $telephone = new Telephone();
+        $telephone->ddd='81';
+        $telephone->number='99996666';
+        Branch::find(1)->telephones()->save($telephone);
 
         Branch::create(['name' => 'Universidade Federal Rural de Pernambuco', 'code'=> 'UFRPE', 'active' => true, 'cnpj' => '24.416.174/0001-06', 'minContribution' => 2000]);
         $address1 = new Address;
@@ -37,6 +42,10 @@ class BranchesSeeder extends Seeder
         $address1->complement = 'Em frente ao zoologico';
         $address1->street = 'Rua Dom, R. Manuel de Medeiros';
         Branch::find(2)->address()->save($address1);
+        $telephone = new Telephone();
+        $telephone->ddd='81';
+        $telephone->number='32288909';
+        Branch::find(2)->telephones()->save($telephone);
 
         Branch::create(['name' => 'Universidade Federal do Rio Grande do Norte', 'code'=> 'UFRN', 'active' => true, 'cnpj' => '24.365.710/0001-83', 'minContribution' => 1250]);
         $address1 = new Address;
@@ -49,5 +58,9 @@ class BranchesSeeder extends Seeder
         $address1->complement = '';
         $address1->street = 'Rua Random';
         Branch::find(3)->address()->save($address1);
+        $telephone = new Telephone();
+        $telephone->ddd='80';
+        $telephone->number='88778877';
+        Branch::find(3)->telephones()->save($telephone);
     }
 }
