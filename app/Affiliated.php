@@ -13,4 +13,8 @@ class Affiliated extends Model
     public function branch(){
         return $this->belongsTo('App\Branch', 'branch_id');
     }
+
+    public function address(){
+        return $this->morphOne('App\Address', 'addressable');
+    }
 }
