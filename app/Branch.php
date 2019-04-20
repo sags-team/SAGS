@@ -21,4 +21,8 @@ class Branch extends Model
     public function telephones(){
         return $this->morphMany('App\Telephone', 'telephoneable');
     }
+
+    public function users(){
+        return $this->hasMany('App\User', 'branch_id');
+    }
 }

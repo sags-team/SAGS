@@ -41,6 +41,9 @@ class User extends Authenticatable
         return $this->belongsToMany('App\Role');
     }
 
+    public function branch(){
+        return $this->belongsTo('App\Branch', 'branch_id');
+    }
     public function hasRole($role){
         $possibleRole = $this->roles()->where('name', $role)->first();
         if($possibleRole == null){
