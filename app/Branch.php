@@ -17,4 +17,8 @@ class Branch extends Model
     public function address(){
         return $this->morphOne('App\Address', 'addressable');
     }
+
+    public function telephones(){
+        return $this->morphMany('App\Telephone', 'telephoneable');
+    }
 }
