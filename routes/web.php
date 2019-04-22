@@ -19,6 +19,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/teste', 'HomeController@teste')->name('layouts.layout');
+Route::get('/admin/branch/information', 'AdminController@branchInformation')->name('branch.information');
+Route::get('/admin/affiliated/create', 'AdminController@createAffiliated')->name('affiliated.create');
+Route::get('/admin/affiliated/list', 'AdminController@showAffiliates')->name('affiliates');
+Route::post('/admin/affiliated/store', 'AffiliatedController@store')->name('affiliated.store');
 
 Route::get('/admin', function(){
     return "Voce é administrador";

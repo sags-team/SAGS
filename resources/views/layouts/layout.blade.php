@@ -19,6 +19,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/sidenav.css') }}" rel="stylesheet">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
@@ -32,12 +33,12 @@
             <!-- nav do lado esquerdo -->
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a class="navbar-brand" href="#">
+                    <a class="navbar-brand" >
                         <img src="{{ asset('images/defaultpfp.png')}}" class="rounded-circle" width="50" height="50" alt="">
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link testando" href="#">Bem vindo {{Auth::user()->name}}</a>
+                    <a class="nav-link profileName">Bem vindo {{Auth::user()->name}}</a>
                 </li>
             </ul>
             <!-- nav do lado direito -->
@@ -52,11 +53,31 @@
                 </li>
             </ul>
         </div>
-
     </nav>
 
-    <div class="container">
-        @yield('content')
-    </div>
+    <!-- sidenavbar -->
+            <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-left">
+                <a class="navbar-brand font-size-sidebar-brand"  href>Filial</a>
+                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
+                        aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+                    <ul class="navbar-nav">
+                        <li class="nav-item {{ Request::is('admin/branch/information') ? 'active' : '' }}">
+                            <a class="nav-link font-size-sidebar-options" href="{{ route('branch.information') }}">Informações</a>
+                        </li>
+                        <a class="navbar-brand font-size-sidebar-brand" href>Filiados</a>
+                        <li class="nav-item {{ Request::is('admin/affiliated/create') ? 'active' : '' }}">
+                            <a class="nav-link font-size-sidebar-options" href="{{ route('affiliated.create') }}">Novo filiado</a>
+                        </li>
+                        <li class="nav-item {{ Request::is('admin/affiliated/list') ? 'active' : '' }}">
+                            <a class="nav-link font-size-sidebar-options" href="{{ route('affiliates') }}">ver listagem</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+    @yield('content')
 </body>
 </html>

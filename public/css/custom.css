@@ -4,8 +4,32 @@
     margin-bottom:1px;
 }
 
-.testando{
+.profileName{
     font-size: 15px;
     vertical-align: middle;
     margin-top: 10px;
+}
+
+.font-size-sidebar-brand{
+    font-size: 26px;
+}
+
+.font-size-sidebar-options{
+    font-size: 18px;
+}
+
+.background-selection{
+    background-color:#F55B1D;
+}
+
+.nav-item.active{
+    background-color:#F55B1D; 
+}
+
+.initial-space{
+    margin-left: 200px;
+}
+
+.top-margin-row{
+    margin-top: 20px;
 }
