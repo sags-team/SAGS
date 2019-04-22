@@ -18,6 +18,8 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/teste', 'HomeController@teste')->name('layouts.layout');
+
 Route::get('/admin', function(){
     return "Voce é administrador";
 })->middleware(['auth', 'auth.admin']);

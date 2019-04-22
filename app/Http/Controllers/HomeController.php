@@ -26,6 +26,10 @@ class HomeController extends Controller
         return view('home');
     }
 
+    public function teste(){
+        return view('layouts.layout');
+    }
+
     public function version(){
         $name = "SAGS - Sistema de Administração e Gerenciamento de Sindicatos";
         $version = "0.1";
