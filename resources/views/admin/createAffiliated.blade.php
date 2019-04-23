@@ -22,10 +22,20 @@
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">Nome: </label>
                         <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                        @if ($errors->has('name'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">Email: </label>
                         <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autocomplete="email">
+                        @if ($errors->has('email'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">Estado civil: </label>
@@ -40,14 +50,29 @@
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">CPF: </label>
                         <input id="cpf" type="text" class="form-control{{ $errors->has('cpf') ? ' is-invalid' : '' }}" name="cpf" value="{{ old('cpf') }}" required autocomplete="cpf" autofocus> 
+                        @if ($errors->has('cpf'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('cpf') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">RG: </label>
                         <input id="rg" type="text" class="form-control{{ $errors->has('rg') ? ' is-invalid' : '' }}" name="rg" value="{{ old('rg') }}" required autocomplete="rg" autofocus> 
+                        @if ($errors->has('rg'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('rg') }}</strong>
+                            </span>
+                        @endif
                     </div>
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">SIAPE: </label>
                         <input id="siape" type="text" class="form-control{{ $errors->has('siape') ? ' is-invalid' : '' }}" name="siape" value="{{ old('siape') }}" required autocomplete="siape" autofocus> 
+                        @if ($errors->has('siape'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('siape') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 
@@ -89,7 +114,12 @@
                     </div>
                     <div class="col-sm-4">
                         <label class=" col-form-label text-md-right">Contribuição Sindical: </label>
-                        <input id="contribution" type="text" class="form-control{{ $errors->has('contribution') ? ' is-invalid' : '' }}" name="contribution" value="{{ old('contribution') }}" required autocomplete="siape" autofocus> 
+                        <input id="contribution" type="text" class="form-control{{ $errors->has('contribution') ? ' is-invalid' : '' }}" name="contribution" value="{{ old('contribution') }}" required autocomplete="siape" autofocus>
+                        @if ($errors->has('contribution'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('contribution') }}</strong>
+                            </span>
+                        @endif
                     </div>
                 </div>
 

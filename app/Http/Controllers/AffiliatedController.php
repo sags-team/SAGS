@@ -23,7 +23,7 @@ class AffiliatedController extends Controller
             'email'=>'email',
             'siape'=>'required|min:7|max:7',
             'rg'=>'required|min:6|max:14',
-            'contribution'=>'required|regex:/^\d+(\,\d{1,2})?$/',
+            'contribution'=>'required|regex:/^\d+(\.\d{1,2})?$/',
         ]);
 
         $affiliated = new Affiliated();
@@ -33,6 +33,7 @@ class AffiliatedController extends Controller
         $affiliated->siape = $request->input('siape');
         $affiliated->rg = $request->input('rg');
         $affiliated->contribution = (int)(100*floatval($request->input('contribution')));
+        dd($affiliated->contribution);
         $affiliated->sex = $request->input('sex');
         $affiliated->maritalStat = $request->input('maritalStat');
         $affiliated->educationDegree = $request->input('educationDegree');
