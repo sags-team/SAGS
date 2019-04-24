@@ -18,7 +18,7 @@ class AddAttributesAffiliated extends Migration
             $table->string('rg')->unique();
             $table->string('maritalStat');
             $table->string('educationDegree');
-            $table->string('WorkDegree');
+            $table->string('workDegree');
             $table->integer('contribution');
         });
     }

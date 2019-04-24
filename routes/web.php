@@ -23,6 +23,13 @@ Route::get('/admin/branch/information', 'AdminController@branchInformation')->na
 Route::get('/admin/affiliated/create', 'AdminController@createAffiliated')->name('affiliated.create');
 Route::get('/admin/affiliated/list', 'AdminController@showAffiliates')->name('affiliates');
 Route::post('/admin/affiliated/store', 'AffiliatedController@store')->name('affiliated.store');
+Route::get('/admin/affiliated/{id}/show','AffiliatedController@show')->name('affiliated.show');
+Route::post('/admin/affiliated/delete', 'AffiliatedController@destroy')->name('affiliated.delete');
+
+Route::put('/admin/affiliated/{id}/update', 'AffiliatedController@update')->name('affiliated.update');
+Route::get('/admin/affiliated/criar', 'AffiliatedController@criar')->name('affiliated.criar');
+
+Route::get('/admin/affiliated/{id}/editar', 'AffiliatedController@editar')->name('affiliated.editar');
 
 Route::get('/admin', function(){
     return "Voce é administrador";

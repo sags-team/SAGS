@@ -33,3 +33,8 @@
 .top-margin-row{
     margin-top: 20px;
 }
+
+.line{
+    display: inline;
+    float: left;
+}

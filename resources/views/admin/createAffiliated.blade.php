@@ -7,15 +7,6 @@
             Adicionando novo Filiado:
         </div>
         <div class="card-body">
-            @if ($errors->any())
-                <div class="alert alert-danger">
-                    <ul>
-                        @foreach ($errors->all() as $error)
-                            <li>{{ $error }}</li>
-                        @endforeach
-                    </ul>
-                </div><br />
-            @endif
             <form method="POST" action="{{ route('affiliated.store') }}">
                 @csrf
                 <div class="form-group row">
@@ -134,4 +125,14 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/plugins/jquery-maskmoney/dist/jquery.maskMoney.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('carregou!!!')
+        $("#contribution").maskMoney({prefix:'R$ ', thousands:'.', decimal:',', affixesStay: true});
+    });
+</script>
 @endsection
