@@ -12,12 +12,12 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
 
 Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/teste', 'HomeController@teste')->name('layouts.layout');
 Route::get('/admin/branch/information', 'AdminController@branchInformation')->name('branch.information');
 Route::get('/admin/affiliated/create', 'AdminController@createAffiliated')->name('affiliated.create');

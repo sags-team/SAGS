@@ -19,6 +19,10 @@ class AdminController extends Controller
         $this->middleware('auth.admin');
     }
 
+    public function admin(){
+        return view('admin.home');
+    }
+
     public function branchInformation(){
         $branch = Auth::user()->branch;
         return view('admin.information')->with('branch', $branch);
