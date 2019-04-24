@@ -84,7 +84,7 @@ class AffiliatedController extends Controller
             $affiliated->delete();
             return redirect('/admin/affiliated/list')->with('success','Filiado deletado');
         }else{
-            dd('deu ruim');
+            return redirect('/admin/affiliated/list')->with('success','Problema ao deletar Filiado');
         }
         
 

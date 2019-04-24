@@ -39,7 +39,7 @@
                             <form action="{{route('affiliated.delete')}}" method="post">
                                 @csrf
                                 <input type="hidden" name="id" value="{{$affiliated->id}}" />
-                                <button class="btn btn-danger" type="submit">Deletar</button>
+                                <button class="btn btn-danger" type="submit" onclick="this.disabled=true;this.form.submit();">Deletar</button>
                             </form>
                         </div>
                         <div class="line">
