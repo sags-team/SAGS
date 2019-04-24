@@ -29,7 +29,7 @@ class AdminController extends Controller
     }
 
     public function createAffiliated(){
-        return view('admin.createAffiliated');
+        return view('admin.affiliated.create');
     }
 
     public function showAffiliates(){

@@ -16,7 +16,8 @@ class AffiliatedController extends Controller
     }
 
     public function store(Request $request)
-    {   
+    {
+        dd($request);
         $request->merge(['contribution' => preg_replace('/\D/', '', $request->input('contribution'))]);
         $request->validate([
             'name'=>'required|min:5',
@@ -49,7 +50,7 @@ class AffiliatedController extends Controller
     public function criar()
     {
         $affiliated = new Affiliated();
-        return view('admin.affiliate.create', compact('affiliated'));
+        return view('admin.affiliated.create', compact('affiliated'));
     }
 
     public function editar($id)
