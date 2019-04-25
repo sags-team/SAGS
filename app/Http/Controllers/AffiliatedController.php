@@ -51,7 +51,7 @@ class AffiliatedController extends Controller
             where('cpf', $affiliatedNew->cpf)->first();
                          
         if($affiliated != null){
-            return "tem mesmo branch_id e cpf";
+            return redirect()->route('admin.exist');
         }else{
             $address = new Address($request->input());
             $telephone1 = new Telephone();
@@ -65,7 +65,7 @@ class AffiliatedController extends Controller
             $affiliatedNew->address()->save($address);
             $affiliatedNew->telephones()->save($telephone1);
             $affiliatedNew->telephones()->save($telephone2);
-            return "Salvou Com sucesso";
+            return redirect()->action('AdminController@showAffiliates');
         }
 
 
@@ -79,17 +79,84 @@ class AffiliatedController extends Controller
         return view('admin.affiliated.create', compact('affiliated'));
     }
 
-    public function editar($id)
+    public function edit($id)
     {
         $affiliated = Affiliated::findOrFail($id);
-        $affiliated->maritalStat = "Casado";
         return view('admin.affiliated.edit', compact('affiliated'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request)
     {
-        $input = $request->input();
-        dd($input);
+        $request->merge(['contribution' => preg_replace('/\D/', '', $request->input('contribution'))]);
+        $request->validate([
+            'name'=>'required|min:5|string',
+            'cpf'=>'required|digits:11',
+            'email'=>'email',
+            'siape'=>'required|digits:7|numeric',
+            'rg'=>'required|min:6|max:14',
+            'contribution'=>'required',
+            'cep'=>'required|digits:8|numeric',
+            'country'=>'required|string',
+            'state'=>'required|string',
+            'city'=>'required|string',
+            'neighborhood'=>'required|string',
+            'number'=>'required|numeric',
+            'complement'=>'required|string',
+            'street'=>'required|string',
+            'ddd1'=>'required|digits:3',
+            'ddd2'=>'required|digits:3',
+            'telephone1'=>'required|numeric',
+            'telephone2'=>'required|numeric'
+        ]);
+
+        $admin = Auth::user();
+        $affiliated = Affiliated::find($request->input('affiliated_id'));
+        if($affiliated){
+            if($affiliated->branch->id == $admin->branch->id){
+                $affiliated->name = $request->input('name');
+                $affiliated->cpf = $request->input('cpf');
+                $affiliated->email = $request->input('email');
+                $affiliated->siape = $request->input('siape');
+                $affiliated->rg = $request->input('rg');
+                $affiliated->contribution = $request->input('contribution');
+                
+                $address = $affiliated->address;
+                $address->cep = $request->input('cep');
+                $address->country = $request->input('country');
+                $address->state = $request->input('state');
+                $address->city = $request->input('city');
+                $address->neighborhood = $request->input('neighborhood');
+                $address->number = $request->input('number');
+                $address->complement = $request->input('complement');
+
+                $address->save();
+
+                if($affiliated->telephones[0]){
+                    $affiliated->telephones[0]->ddd = $request->input('ddd1');
+                    $affiliated->telephones[0]->number = $request->input('telephone1');
+                    $affiliated->telephones[0]->save();
+                }
+                if(isset($affiliated->telephones[1])){
+                    $affiliated->telephones[1]->ddd = $request->input('ddd2');
+                    $affiliated->telephones[1]->number = $request->input('telephone2');
+                    $affiliated->telephones[1]->save();
+                }else{
+                    $telephone = new Telephone();
+                    $telephone->ddd = $request->input('ddd2');
+                    $telephone->number = $request->input('telephone2');
+                    $affiliated->telephones()->save($telephone);
+                }
+            }else{
+                return redirect()->route('admin.denied');
+            }
+            $affiliated->save();
+            //return view('admin.affiliated.show', compact('affiliated'));
+            return redirect()->route('affiliated.show', compact('affiliated'));
+
+        }
+        
+        return redirect()->route('admin.denied');
+        
     }
 
     public function show($id)

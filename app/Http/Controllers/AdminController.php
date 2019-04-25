@@ -23,6 +23,14 @@ class AdminController extends Controller
         return view('admin.home');
     }
 
+    public function denied(){
+        return view('admin.denied');
+    }
+
+    public function alreadyExist(){
+        return view('admin.alreadyExists');
+    }
+
     public function branchInformation(){
         $branch = Auth::user()->branch;
         return view('admin.information')->with('branch', $branch);
@@ -36,4 +44,5 @@ class AdminController extends Controller
         $branch = Auth::user()->branch;
         return view('admin.showAffiliated')->with('affiliates', $branch->affiliates);
     }
+    
 }

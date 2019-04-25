@@ -33,7 +33,7 @@
                     <td> R${{$affiliated->contribution/100}}</td>
                     <td class="">
                         <div class="line">
-                            <a href="{{ route('affiliated.editar', $affiliated->id)}}" class="btn btn-primary">Editar</a>
+                            <a href="{{ route('affiliated.edit', $affiliated->id)}}" class="btn btn-primary">Editar</a>
                         </div>
                         <div class="line">
                             <form action="{{route('affiliated.delete')}}" method="post">
