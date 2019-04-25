@@ -17,9 +17,9 @@ class CreateAffiliatesTable extends Migration
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
             $table->string('name');
-            $table->string('cpf')->unique();
+            $table->string('cpf');
             $table->string('sex');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->bigInteger('branch_id')->unsigned();
             $table->timestamps();
 

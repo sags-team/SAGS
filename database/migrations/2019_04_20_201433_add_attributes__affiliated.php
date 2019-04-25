@@ -14,8 +14,8 @@ class AddAttributesAffiliated extends Migration
     public function up()
     {
         Schema::table('affiliates', function (Blueprint $table) {
-            $table->string('siape')->unique();
-            $table->string('rg')->unique();
+            $table->string('siape');
+            $table->string('rg');
             $table->string('maritalStat');
             $table->string('educationDegree');
             $table->string('workDegree');

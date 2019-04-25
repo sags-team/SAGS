@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Affiliated;
+use App\Address;
+use App\Telephone;
 use Auth;
 
 class AffiliatedController extends Controller
@@ -17,31 +19,55 @@ class AffiliatedController extends Controller
 
     public function store(Request $request)
     {
-        dd($request);
+        
         $request->merge(['contribution' => preg_replace('/\D/', '', $request->input('contribution'))]);
         $request->validate([
-            'name'=>'required|min:5',
-            'cpf'=>'required|min:11|max:11',
+            'name'=>'required|min:5|string',
+            'cpf'=>'required|digits:11',
             'email'=>'email',
-            'siape'=>'required|min:7|max:7',
+            'siape'=>'required|digits:7|numeric',
             'rg'=>'required|min:6|max:14',
-            'contribution'=>'required'
-            //'contribution'=>'required|regex:/^\d+(\.\d{1,2})?$/',
+            'contribution'=>'required',
+            'cep'=>'required|digits:8|numeric',
+            'country'=>'required|string',
+            'state'=>'required|string',
+            'city'=>'required|string',
+            'neighborhood'=>'required|string',
+            'number'=>'required|numeric',
+            'complement'=>'required|string',
+            'street'=>'required|string',
+            'ddd1'=>'required|digits:3',
+            'ddd2'=>'required|digits:3',
+            'telephone1'=>'required|numeric',
+            'telephone2'=>'required|numeric'
         ]);
 
-        $affiliated = new Affiliated();
-        $affiliated->name = $request->input('name');
-        $affiliated->cpf = $request->input('cpf');
-        $affiliated->email = $request->input('email');
-        $affiliated->siape = $request->input('siape');
-        $affiliated->rg = $request->input('rg');
-        $affiliated->contribution = (int)$request->input('contribution');
-        $affiliated->sex = $request->input('sex');
-        $affiliated->maritalStat = $request->input('maritalStat');
-        $affiliated->educationDegree = $request->input('educationDegree');
-        $affiliated->workDegree = $request->input('workDegree');
-        $affiliated->branch_id = Auth::user()->branch->id;
-        $affiliated->save();
+        $affiliatedNew = new Affiliated($request->input());
+        $affiliatedNew->contribution = (int)$request->input('contribution');
+        $affiliatedNew->branch_id = Auth::user()->branch->id;
+
+        $affiliated = Affiliated::
+            where('branch_id', $affiliatedNew->branch_id)->
+            where('cpf', $affiliatedNew->cpf)->first();
+                         
+        if($affiliated != null){
+            return "tem mesmo branch_id e cpf";
+        }else{
+            $address = new Address($request->input());
+            $telephone1 = new Telephone();
+            $telephone1->ddd = $request->input('ddd1');
+            $telephone1->number = $request->input('telephone1');
+            $telephone2 = new Telephone();
+            $telephone2->ddd = $request->input('ddd2');
+            $telephone2->number = $request->input('telephone2');
+
+            $affiliatedNew->save();
+            $affiliatedNew->address()->save($address);
+            $affiliatedNew->telephones()->save($telephone1);
+            $affiliatedNew->telephones()->save($telephone2);
+            return "Salvou Com sucesso";
+        }
+
 
 
         return "you did it !";
