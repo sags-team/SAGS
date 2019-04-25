@@ -36,8 +36,4 @@ class AdminController extends Controller
         $branch = Auth::user()->branch;
         return view('admin.showAffiliated')->with('affiliates', $branch->affiliates);
     }
-
-    public function denied(){
-        return view('admin.denied');
-    }
 }

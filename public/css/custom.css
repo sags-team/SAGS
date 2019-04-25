@@ -28,15 +28,18 @@
     border-color: #dee2e6 #dee2e6 #f8fafc;
 }
 
+
+
 .initial-space{
     margin-left: 200px;
-}
-
-.top-margin-row{
-    margin-top: 20px;
 }
 
 .line{
     display: inline;
     float: left;
 }
+
+.top-margin-row{
+    margin-top: 20px;
+}
+

@@ -64,14 +64,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarsExampleDefault">
                     <ul class="navbar-nav">
-                        <li class="nav-item {{ Request::is('admin/branch/information') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('admin/branch/information') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('branch.information') }}">Informações</a>
                         </li>
                         <a class="navbar-brand font-size-sidebar-brand" href>Filiados</a>
-                        <li class="nav-item {{ Request::is('admin/affiliated/create') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('admin/affiliated/create') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('affiliated.create') }}">Novo filiado</a>
                         </li>
-                        <li class="nav-item {{ Request::is('admin/affiliated/list') ? 'active' : '' }}">
+                        <li class="nav-item {{ Request::is('admin/affiliated/list') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('affiliates') }}">ver listagem</a>
                         </li>
                     </ul>

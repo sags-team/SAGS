@@ -34,7 +34,7 @@ body{
         flex-direction:column;width:100%
     }
     .navbar.fixed-left .navbar-collapse .navbar-nav .nav-item{
-        width:100%
+        width:100%;
     }
     .navbar.fixed-left .navbar-collapse .navbar-nav .nav-item .dropdown-menu{
         top:0

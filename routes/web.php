@@ -32,8 +32,6 @@ Route::get('/admin/affiliated/criar', 'AffiliatedController@criar')->name('affil
 
 Route::get('/admin/affiliated/{id}/editar', 'AffiliatedController@editar')->name('affiliated.editar');
 
-Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
-
 /*
 Route::get('/admin', function(){
     return "Voce é administrador";
