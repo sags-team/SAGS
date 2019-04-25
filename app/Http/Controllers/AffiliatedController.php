@@ -92,9 +92,16 @@ class AffiliatedController extends Controller
         dd($input);
     }
 
-    public function show($id){
-        
-        $affiliated = Affiliated::findOrFail($id);
+    public function show($id)
+    {
+        $affiliated = Affiliated::find($id);
+        $admin = Auth::user();
+        if($affiliated == null){
+            return view('admin.denied');
+        }
+        if($affiliated->branch->id != $admin->branch->id){
+            return view('admin.denied');
+        }
         return view('admin.affiliated.show', compact('affiliated'));
     }
 
