@@ -65,12 +65,8 @@ class AffiliatedController extends Controller
             $affiliatedNew->address()->save($address);
             $affiliatedNew->telephones()->save($telephone1);
             $affiliatedNew->telephones()->save($telephone2);
-            return redirect()->action('AdminController@showAffiliates');
+            return redirect()->route('affiliated.show', ['id'=>$affiliatedNew->id]);
         }
-
-
-
-        return "you did it !";
     }
 
     public function criar()

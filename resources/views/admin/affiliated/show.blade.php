@@ -128,7 +128,7 @@
                             <div class="card border-dark">
                                 <div class="card-body">
                                     <h5 class="card-title">Valor de contribuição:</h5>
-                                    <p class="card-text"> R$ {{ $affiliated->contribution/100 }}</p>
+                                    <p class="card-text"> R$ {{ number_format($affiliated->contribution/100, 2 )}}</p>
                                 </div>
                             </div>
                         </div>

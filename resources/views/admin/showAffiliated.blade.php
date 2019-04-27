@@ -30,7 +30,7 @@
                     <td>{{$affiliated->siape}}</td>
                     <td>{{$affiliated->cpf}}</td>
                     <td>{{$affiliated->workDegree}}</td>
-                    <td> R${{$affiliated->contribution/100}}</td>
+                    <td>R$ {{number_format($affiliated->contribution/100, 2)}}</td>
                     <td class="">
                         <div class="line">
                             <a href="{{ route('affiliated.edit', $affiliated->id)}}" class="btn btn-primary">Editar</a>

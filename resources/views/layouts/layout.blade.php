@@ -43,7 +43,7 @@
             <!-- nav do lado direito -->
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <button type="button" class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                    <button type="button" class="btn btn-danger" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit(); this.disabled= true">
                         Desconectar
                     </button>
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
