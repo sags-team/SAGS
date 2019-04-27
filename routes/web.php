@@ -29,6 +29,7 @@ Route::post('/admin/affiliated/delete', 'AffiliatedController@destroy')->name('a
 Route::get('/admin/affiliated/{id}/show','AffiliatedController@show')->name('affiliated.show');
 
 Route::get('/admin/affiliated/list', 'AdminController@showAffiliates')->name('affiliates');
+Route::post('/admin/affiliated/list', 'AdminController@searchAffiliates')->name('affiliates.search');
 
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');
