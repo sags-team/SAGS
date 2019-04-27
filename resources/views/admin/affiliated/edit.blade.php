@@ -168,7 +168,7 @@
                                 <label class=" col-form-label text-md-right">Contribuição Sindical: </label>
                                 <input id="contribution" type="text"
                                 class="form-control{{ $errors->has('contribution') ? ' is-invalid' : '' }}"
-                                name="contribution" value="{{ $affiliated->contribution }}" required autocomplete="siape" autofocus>
+                                name="contribution" value="{{ str_replace( '.',',',number_format($affiliated->contribution/100, 2)) }}" required autocomplete="siape" autofocus>
                                 @if ($errors->has('contribution'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('contribution') }}</strong>
@@ -384,4 +384,14 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/plugins/jquery-maskmoney/dist/jquery.maskMoney.min.js') }}"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        console.log('carregou!!!')
+        $("#contribution").maskMoney({prefix:'R$ ', thousands:'.', decimal:',', affixesStay: true});
+    });
+</script>
 @endsection
