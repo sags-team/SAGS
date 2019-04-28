@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
+Route::get('/super/home', 'SuperController@home')->name('super.home');
 
 Auth::routes();
 Route::get('/admin/branch/information', 'AdminController@branchInformation')->name('branch.information');
@@ -42,4 +43,8 @@ Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.e
 Route::get('/admin', function(){
     return "Voce é administrador";
 })->middleware(['auth', 'auth.admin']);
+
+Route::get('/super', function(){
+    return "voce é Super";
+})->middleware(['auth', 'auth.super']);
 */
