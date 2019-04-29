@@ -20,4 +20,5 @@ class SuperController extends Controller
     {
         return view('super.denied');
     }
+    
 }

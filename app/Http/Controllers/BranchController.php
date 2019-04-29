@@ -81,4 +81,77 @@ class BranchController extends Controller
             return view('super.branch.show', compact('branch'));
         }
     }
+
+    public function edit($id)
+    {
+        $branch = Branch::find($id);
+        if($branch == null){
+            return redirect()->route('super.denied');
+        }else{
+            return view('super.branch.edit', compact('branch'));
+        }
+    }
+
+    public function update(Request $request){
+        
+        $request->merge(['minContribution' => preg_replace('/\D/', '', $request->input('minContribution'))]);
+        $request->validate([
+            'name'=>'required|min:5|string',
+            'cnpj'=>'required|digits:14',
+            'code'=>'required',
+            'minContribution'=>'required',
+            'cep'=>'required|digits:8|numeric',
+            'country'=>'required|string',
+            'state'=>'required|string',
+            'city'=>'required|string',
+            'neighborhood'=>'required|string',
+            'number'=>'required|numeric',
+            'complement'=>'required|string',
+            'street'=>'required|string',
+            'ddd1'=>'required|digits:3',
+            'ddd2'=>'required|digits:3',
+            'telephone1'=>'required|numeric',
+            'telephone2'=>'required|numeric'
+        ]);
+
+        $branch = Branch::find($request->input('branch_id'));
+        if($branch == null){
+            return redirect()->route('super.denied');
+        }else{
+            $branch->name = $request->input('name');
+            $branch->code = $request->input('code');
+            $branch->cnpj = $request->input('cnpj');
+            $branch->minContribution = $request->input('minContribution');
+
+            $address = $branch->address;
+            $address->cep = $request->input('cep');
+            $address->country = $request->input('country');
+            $address->state = $request->input('state');
+            $address->city = $request->input('city');
+            $address->neighborhood = $request->input('neighborhood');
+            $address->number = $request->input('number');
+            $address->complement = $request->input('complement');
+            $address->save();
+
+            if($branch->telephones[0]){
+                $branch->telephones[0]->ddd = $request->input('ddd1');
+                $branch->telephones[0]->number = $request->input('telephone1');
+                $branch->telephones[0]->save();
+            }
+            if(isset($branch->telephones[1])){
+                $branch->telephones[1]->ddd = $request->input('ddd2');
+                $branch->telephones[1]->number = $request->input('telephone2');
+                $branch->telephones[1]->save();
+            }else{
+                $telephone = new Telephone();
+                $telephone->ddd = $request->input('ddd2');
+                $telephone->number = $request->input('telephone2');
+                $branch->telephones()->save($telephone);
+            }
+
+            $branch->save();
+            return redirect()->route('branch.show', compact('branch'));
+
+        }
+    }
 }

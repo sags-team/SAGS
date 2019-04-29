@@ -77,7 +77,7 @@ class AffiliatedController extends Controller
 
     public function edit($id)
     {
-        $affiliated = Affiliated::findOrFail($id);
+        $affiliated = Affiliated::find($id);
         return view('admin.affiliated.edit', compact('affiliated'));
     }
 
