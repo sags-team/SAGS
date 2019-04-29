@@ -18,6 +18,7 @@ Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
 Route::get('/super/home', 'SuperController@home')->name('super.home');
 
 Auth::routes();
+// Rotas referentes ao administrador
 Route::get('/admin/branch/information', 'AdminController@branchInformation')->name('branch.information');
 
 Route::get('/admin/affiliated/create', 'AdminController@createAffiliated')->name('affiliated.create');
@@ -34,6 +35,10 @@ Route::post('/admin/affiliated/list', 'AdminController@searchAffiliates')->name(
 
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');
+//fim de rotas referentes ao administrador
+
+Route::get('/super/branch/create', 'BranchController@create')->name('branch.create');
+Route::post('/super/branch/store', 'BranchController@store')->name('branch.store');
 
 //Route::put('/admin/affiliated/{id}/update', 'AffiliatedController@update')->name('affiliated.update');
 

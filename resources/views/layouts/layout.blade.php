@@ -56,7 +56,7 @@
 
     <!-- sidenavbar -->
             <nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-left">
-                <a class="navbar-brand font-size-sidebar-brand"  href>Filial</a>
+                <a class="navbar-brand font-size-sidebar-brand text-white" >Filial</a>
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault"
                         aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
@@ -67,7 +67,7 @@
                         <li class="nav-item {{ Request::is('admin/branch/information') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('branch.information') }}">Informações</a>
                         </li>
-                        <a class="navbar-brand font-size-sidebar-brand" href>Filiados</a>
+                        <a class="navbar-brand font-size-sidebar-brand text-white" >Filiados</a>
                         <li class="nav-item {{ Request::is('admin/affiliated/create') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('affiliated.create') }}">Novo filiado</a>
                         </li>

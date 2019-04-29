@@ -165,7 +165,7 @@
                             <!-- Campo de contribuição sindical do filiado-->
                             <div class="col-sm-4">
                                 <label class=" col-form-label text-md-right">Contribuição Sindical: </label>
-                                <input id="contribution" type="text" class="form-control{{ $errors->has('contribution') ? ' is-invalid' : '' }}" name="contribution" value="{{ old('contribution') }}" required autocomplete="siape" autofocus>
+                                <input id="contribution" type="text" class="form-control{{ $errors->has('contribution') ? ' is-invalid' : '' }}" name="contribution" value="{{ str_replace( '.',',',number_format(old('contribution')/100, 2)) }}" required autocomplete="contribution" autofocus>
                                 @if ($errors->has('contribution'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('contribution') }}</strong>
@@ -227,7 +227,7 @@
                                 <input
                                     id="city" type="text"
                                     class="form-control{{ $errors->has('city') ? ' is-invalid' : '' }}"
-                                    name="city" value="{{ old('city') }}" required autocomplete="country"> 
+                                    name="city" value="{{ old('city') }}" required autocomplete="city"> 
                                 @if ($errors->has('city'))
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $errors->first('city') }}</strong>

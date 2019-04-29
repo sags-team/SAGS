@@ -11,9 +11,9 @@
                 <div class="card border-dark">
                     <div class="card-body text-dark">
                         <h5 class="card-title">Filiais</h6>
-                        <h6 class="card-title" style="margin-left:10px;">Informações</h6>
+                        <h6 class="card-title" style="margin-left:10px;">Novo Cadastro</h6>
                         <p class="card-text" style="margin-left:20px;">
-                            Exibe informações cadastrais da filial no qual administrador está vinculado.
+                            Permite ao administrador cadastrar uma nova filial para inserção no sistema
                         </p>
                     </div>
                 </div>
