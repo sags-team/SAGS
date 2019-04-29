@@ -15,4 +15,9 @@ class SuperController extends Controller
     public function home(){
         return view('super.home');
     }
+
+    public function denied()
+    {
+        return view('super.denied');
+    }
 }

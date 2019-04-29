@@ -76,7 +76,7 @@ class BranchController extends Controller
     {
         $branch = Branch::find($id);
         if($branch == null){
-            return 'Deu ruim';
+            return redirect()->route('super.denied');
         }else{
             return view('super.branch.show', compact('branch'));
         }
