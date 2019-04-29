@@ -63,8 +63,18 @@ class BranchController extends Controller
             $branchNew->address()->save($address);
             $branchNew->telephones()->save($telephone1);
             $branchNew->telephones()->save($telephone2);
-            return "Salvo com Sucesso";
+            return redirect()->route('branch.show', ['id'=>$branchNew->id]);
         }
 
+    }
+
+    public function show($id)
+    {
+        $branch = Branch::find($id);
+        if($branch == null){
+            return 'Deu ruim';
+        }else{
+            return view('super.branch.show', compact('branch'));
+        }
     }
 }
