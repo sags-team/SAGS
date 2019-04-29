@@ -16,6 +16,10 @@ class BranchController extends Controller
         $this->middleware('auth.super');
     }
 
+    public function alreadyExists(){
+        return view('super.alreadyExists');
+    }
+
     public function create()
     {
         return view('super.branch.create');
@@ -49,7 +53,7 @@ class BranchController extends Controller
 
         $branch = Branch::where('cnpj', $branchNew->cnpj)->first();
         if($branch != null){
-            return "Already Exists";
+            return redirect()->route('branch.alreadyExists');
         }else{
             $address = new Address($request->input());
             $telephone1 = new Telephone();

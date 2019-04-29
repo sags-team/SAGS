@@ -42,6 +42,8 @@ Route::post('/super/branch/store', 'BranchController@store')->name('branch.store
 
 Route::get('/super/branch/{id}/show', 'BranchController@show')->name('branch.show');
 
+Route::get('/super/alreadyExist', 'BranchController@alreadyExists')->name('branch.alreadyExists');
+
 //Route::put('/admin/affiliated/{id}/update', 'AffiliatedController@update')->name('affiliated.update');
 
 //Route::get('/admin/affiliated/{id}/editar', 'AffiliatedController@editar')->name('affiliated.editar');
