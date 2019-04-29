@@ -166,7 +166,6 @@
                         class="tab-pane fade" id="telephone-area"
                         role="tabpanel" aria-labelledby="telephone-tab">
                         <!-- Area de informações de telefones -->
-                        Area de Telefones;
                         <div class="row top-margin-row">
                             <div class="col-sm-4 offset-md-3" style="margin-top:10px;">
                                 <h5>Telefone 1</h5>

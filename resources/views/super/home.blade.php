@@ -15,6 +15,11 @@
                         <p class="card-text" style="margin-left:20px;">
                             Permite ao administrador cadastrar uma nova filial para inserção no sistema
                         </p>
+                        <h6 class="card-title" style="margin-left:10px;">Ver listagem</h6>
+                        <p class="card-text" style="margin-left:20px;">
+                            Permite ao administrador observar todas as filiais cadastradas, além de alterar,
+                            deletar e visualizar.
+                        </p>
                     </div>
                 </div>
 

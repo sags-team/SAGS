@@ -92,7 +92,8 @@ class BranchController extends Controller
         }
     }
 
-    public function update(Request $request){
+    public function update(Request $request)
+    {
         
         $request->merge(['minContribution' => preg_replace('/\D/', '', $request->input('minContribution'))]);
         $request->validate([
@@ -153,5 +154,26 @@ class BranchController extends Controller
             return redirect()->route('branch.show', compact('branch'));
 
         }
+    }
+
+    public function list()
+    {
+        $branches = Branch::paginate(5);
+        return view('super.branch.list', compact('branches'));
+    }
+
+    public function destroy(Request $request)
+    {
+        $branch = Branch::find($request->input('id'));
+        $affiliates = $branch->affiliates;
+        foreach($affiliates as $affiliated){
+            $affiliated->address()->delete();
+            $affiliated->telephones()->delete();
+            $affiliated->delete();
+        }
+        $branch->address()->delete();
+        $branch->telephones()->delete();
+        $branch->delete();
+        return redirect()->route('branch.list');
     }
 }

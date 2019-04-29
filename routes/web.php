@@ -39,9 +39,10 @@ Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.e
 
 Route::get('/super/branch/create', 'BranchController@create')->name('branch.create');
 Route::post('/super/branch/store', 'BranchController@store')->name('branch.store');
-
+Route::post('/super/branch/delete', 'BranchController@destroy')->name('branch.delete');
 Route::get('/super/branch/{id}/show', 'BranchController@show')->name('branch.show');
 Route::get('/super/branch/{id}/edit', 'BranchController@edit')->name('branch.edit');
+Route::get('/super/branch/list', 'BranchController@list')->name('branch.list');
 
 Route::post('/super/branch/update', 'BranchController@update')->name('branch.update');
 
