@@ -4,17 +4,18 @@
     <div class="container initial-space">
         <div class="card uper">
             <div class="card-header">
-                Criando novo administrador: 
+                Editando Usuário {{$user->name}}:
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('user.store')}}">
+                <form method="POST" action="{{ route('user.update') }}">
                     @csrf
+                    <input type="hidden" id="user-id" name="user_id" value= {{ $user->id }}>
                     <div class="row justify-content-center">
                         <div class="col-md-8">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">{{ __('Nome') }}</label>
                                 <div class="col-md-6">
-                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
+                                    <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ $user->name }}" required autocomplete="name" autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -28,7 +29,7 @@
                                 <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail') }}</label>
 
                                 <div class="col-md-6">
-                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                    <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ $user->email }}" required autocomplete="email">
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -65,7 +66,7 @@
                                 <div class="col-md-6">
                                     <select name="branch_id" id="branchId" class="form-control">
                                         @foreach($branches as $branch)
-                                            <option  @if (old('branch_id') == $branch->id ) selected="selected" @endif value={{$branch->id}}>{{$branch->name}}</option>
+                                            <option  @if ( $user->branch->id == $branch->id ) selected="selected" @endif value={{$branch->id}}>{{$branch->name}}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -74,7 +75,7 @@
                             <div class="form-group row mb-0">
                                 <div class="col-md-6 offset-md-5">
                                     <button type="submit" class="btn btn-primary" onclick="this.disabled=true;this.form.submit();">
-                                        {{ __('Registrar') }}
+                                        {{ __('Editar') }}
                                     </button>
                                 </div>
                             </div>

@@ -168,7 +168,8 @@ class AffiliatedController extends Controller
         return view('admin.affiliated.show', compact('affiliated'));
     }
 
-    public function destroy(Request $request){
+    public function destroy(Request $request)
+    {
         $branch = Auth::user()->branch;
         $affiliated = Affiliated::findOrFail($request->input('id'));
         if($branch->id == $affiliated->branch->id){

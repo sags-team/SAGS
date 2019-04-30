@@ -44,6 +44,7 @@ Route::post('/super/branch/delete', 'BranchController@destroy')->name('branch.de
 Route::get('/super/branch/{id}/show', 'BranchController@show')->name('branch.show');
 Route::get('/super/branch/{id}/edit', 'BranchController@edit')->name('branch.edit');
 Route::get('/super/branch/list', 'BranchController@list')->name('branch.list');
+Route::post('/super/branch/list', 'BranchController@search')->name('branch.search');
 
 Route::post('/super/branch/update', 'BranchController@update')->name('branch.update');
 
@@ -53,6 +54,12 @@ Route::get('/super/denied', 'SuperController@denied')->name('super.denied');
 //Rotas para CRUD de usuário
 Route::get('/super/user/create', 'UserController@create')->name('user.create');
 Route::post('/super/user/store', 'UserController@store')->name('user.store');
+Route::get('/super/user/list', 'UserController@list')->name('user.list');
+route::get('/super/user/{id}/show', 'UserController@show')->name('user.show');
+Route::get('/super/user/{id}/edit', 'UserController@edit')->name('user.edit');
+Route::post('/super/user/update', 'UserController@update')->name('user.update');
+Route::post('/super/user/delete', 'UserController@destroy')->name('user.delete');
+Route::post('/super/user/list', 'UserController@search')->name('user.search');
 
 
 //Route::put('/admin/affiliated/{id}/update', 'AffiliatedController@update')->name('affiliated.update');

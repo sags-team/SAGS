@@ -74,8 +74,8 @@
                         <li class="nav-item {{ Request::is('super/user/create') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('user.create') }}">Novo admin.</a>
                         </li>
-                        <li class="nav-item {{ Request::is('admin/affiliated/list') ? 'active background-selection' : '' }}">
-                            <a class="nav-link font-size-sidebar-options" href="{{ route('affiliates') }}">ver listagem</a>
+                        <li class="nav-item {{ Request::is('super/user/list') ? 'active background-selection' : '' }}">
+                            <a class="nav-link font-size-sidebar-options" href="{{ route('user.list') }}">ver listagem</a>
                         </li>
                     </ul>
                 </div>

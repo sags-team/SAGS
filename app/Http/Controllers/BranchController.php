@@ -176,4 +176,13 @@ class BranchController extends Controller
         $branch->delete();
         return redirect()->route('branch.list');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+        $branches = Branch::where('name', 'LIKE', '%'.$search.'%')
+                        ->orWhere('code', 'LIKE', '%'.$search.'%')
+                        ->orWhere('cnpj', 'LIKE', '%'.$search.'%')->paginate(5);
+        return view('super.branch.list')->with('branches', $branches);
+    }
 }

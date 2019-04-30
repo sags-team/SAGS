@@ -33,8 +33,8 @@
                         </p>
                         <h6 class="card-title" style="margin-left:10px;">Ver listagem</h6>
                         <p class="card-text" style="margin-left:20px;">
-                            O administrador será capaz de visualizar todos os filiados cadastrados
-                            que estão vinculados a sua filial. Para cada filiado, será possivel, visualizar
+                            O administrador será capaz de visualizar todos os usuários cadastrados.
+                            Para cada usuário, será possivel, visualizar
                             os dados cadastrais, assim como edita-los e também deletar.
                         </p>
                     </div>
