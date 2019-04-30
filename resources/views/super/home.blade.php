@@ -25,11 +25,11 @@
 
                 <div class="card border-dark" style="margin-top:5px;">
                     <div class="card-body text-dark">
-                        <h5 class="card-title">Filiados</h6>
-                        <h6 class="card-title" style="margin-left:10px;">Novo filiado</h6>
+                        <h5 class="card-title">Administradores</h6>
+                        <h6 class="card-title" style="margin-left:10px;">Novo administrador</h6>
                         <p class="card-text" style="margin-left:20px;">
-                            Permite que o administrador cadastre um novo filiado que será automaticamente
-                            vinculado a filial na qual pertence.
+                            Permite que o super administrador cadastre um administrador sindical para uma
+                            determinada filial.
                         </p>
                         <h6 class="card-title" style="margin-left:10px;">Ver listagem</h6>
                         <p class="card-text" style="margin-left:20px;">

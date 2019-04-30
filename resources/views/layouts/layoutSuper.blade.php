@@ -70,9 +70,9 @@
                         <li class="nav-item {{ Request::is('super/branch/list') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('branch.list') }}">Ver listagem</a>
                         </li>
-                        <a class="navbar-brand font-size-sidebar-brand text-white">Filiados</a>
-                        <li class="nav-item {{ Request::is('admin/affiliated/create') ? 'active background-selection' : '' }}">
-                            <a class="nav-link font-size-sidebar-options" href="{{ route('affiliated.create') }}">Novo filiado</a>
+                        <a class="navbar-brand font-size-sidebar-brand text-white">Administrador</a>
+                        <li class="nav-item {{ Request::is('super/user/create') ? 'active background-selection' : '' }}">
+                            <a class="nav-link font-size-sidebar-options" href="{{ route('user.create') }}">Novo admin.</a>
                         </li>
                         <li class="nav-item {{ Request::is('admin/affiliated/list') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('affiliates') }}">ver listagem</a>

@@ -37,6 +37,7 @@ Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');
 //fim de rotas referentes ao administrador
 
+//Rotas para CRUD Branch
 Route::get('/super/branch/create', 'BranchController@create')->name('branch.create');
 Route::post('/super/branch/store', 'BranchController@store')->name('branch.store');
 Route::post('/super/branch/delete', 'BranchController@destroy')->name('branch.delete');
@@ -49,6 +50,11 @@ Route::post('/super/branch/update', 'BranchController@update')->name('branch.upd
 
 Route::get('/super/alreadyExist', 'BranchController@alreadyExists')->name('branch.alreadyExists');
 Route::get('/super/denied', 'SuperController@denied')->name('super.denied');
+//Rotas para CRUD de usuário
+Route::get('/super/user/create', 'UserController@create')->name('user.create');
+Route::post('/super/user/store', 'UserController@store')->name('user.store');
+
+
 //Route::put('/admin/affiliated/{id}/update', 'AffiliatedController@update')->name('affiliated.update');
 
 //Route::get('/admin/affiliated/{id}/editar', 'AffiliatedController@editar')->name('affiliated.editar');
