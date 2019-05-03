@@ -51,7 +51,8 @@ class AdminController extends Controller
         $search = $request->input('search');
         $admin = Auth::user();
         $affiliates = Affiliated::where('branch_id', $admin->branch->id)
-            ->where('cpf', 'LIKE', '%'.$search.'%')->orWhere('siape', 'LIKE', '%'.$search.'%')->paginate(5);
+            ->where('cpf', 'LIKE', '%'.$search.'%')->orWhere('siape', 'LIKE', '%'.$search.'%')
+            ->orWhere('name', 'LIKE', '%'.$search.'%')->paginate(5);
         return view('admin.showAffiliated')->with('affiliates', $affiliates);
 
     }

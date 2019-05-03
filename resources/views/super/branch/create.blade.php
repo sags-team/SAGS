@@ -5,6 +5,9 @@
         <div class="card uper">
             <div class="card-header">
                 Criando uma nova filial:
+                @if($errors->any())
+                    <li style="color:red;">Há erros no formulário</li>
+                @endif 
             </div>
             <div class="card-body">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">

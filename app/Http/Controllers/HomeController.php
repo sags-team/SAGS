@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
+use App\User;
 
 class HomeController extends Controller
 {
@@ -21,12 +23,23 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    /*
+    
     public function index()
     {
-        return view('home');
+        $user = Auth::user();
+        if ($user == null) {
+            return view('auth.login');
+        } else {
+            if ($user->hasRole('Administrador sindicato')) {
+                return redirect()->route('admin.home');
+
+            } else if ($user->hasRole('Super')) {
+                return redirect()->route('super.home');
+            }
+        }
+
     }
-    */
+    
     public function teste(){
         return view('layouts.layout');
     }

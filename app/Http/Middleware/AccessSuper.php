@@ -20,6 +20,6 @@ class AccessSuper
             return $next($request);
         }
 
-        return redirect('home');
+        return redirect()->route('index');
     }
 }

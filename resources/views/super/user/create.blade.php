@@ -4,7 +4,10 @@
     <div class="container initial-space">
         <div class="card uper">
             <div class="card-header">
-                Criando novo administrador: 
+                Criando novo administrador:
+                @if($errors->any())
+                    <li style="color:red;">Há erros no formulário</li>
+                @endif 
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('user.store')}}">

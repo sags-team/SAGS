@@ -19,6 +19,6 @@ class AccessAdmin
         if(Auth::user()->hasRole('Administrador sindicato')){
             return $next($request);
         }
-        return redirect('home');
+        return redirect()->route('index');
     }
 }

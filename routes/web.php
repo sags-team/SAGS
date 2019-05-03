@@ -11,9 +11,7 @@
 |
 */
 
-Route::get('/', function () {
-    return view('auth.login');
-});
+Route::get('/', 'HomeController@index')->name('index');
 Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
 Route::get('/super/home', 'SuperController@home')->name('super.home');
 
