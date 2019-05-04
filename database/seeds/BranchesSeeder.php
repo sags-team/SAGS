@@ -29,6 +29,7 @@ class BranchesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='81';
         $telephone->number='99996666';
+        $telephone->ddi='55';
         Branch::find(1)->telephones()->save($telephone);
 
         Branch::create(['name' => 'Universidade Federal Rural de Pernambuco', 'code'=> 'UFRPE', 'active' => true, 'cnpj' => '24.416.174/0001-06', 'minContribution' => 2000]);
@@ -45,6 +46,7 @@ class BranchesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='81';
         $telephone->number='32288909';
+        $telephone->ddi='55';
         Branch::find(2)->telephones()->save($telephone);
 
         Branch::create(['name' => 'Universidade Federal do Rio Grande do Norte', 'code'=> 'UFRN', 'active' => true, 'cnpj' => '24.365.710/0001-83', 'minContribution' => 1250]);
@@ -61,6 +63,7 @@ class BranchesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='80';
         $telephone->number='88778877';
+        $telephone->ddi='55';
         Branch::find(3)->telephones()->save($telephone);
     }
 }

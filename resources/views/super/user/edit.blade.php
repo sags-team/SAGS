@@ -5,6 +5,9 @@
         <div class="card uper">
             <div class="card-header">
                 Editando Usuário {{$user->name}}:
+                @if($errors->any())
+                    <li style="color:red;">Há erros no formulário</li>
+                @endif 
             </div>
             <div class="card-body">
                 <form method="POST" action="{{ route('user.update') }}">

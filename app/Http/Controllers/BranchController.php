@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Branch;
 use App\Address;
 use App\Telephone;
+use Storage;
 
 class BranchController extends Controller
 {
@@ -22,7 +23,10 @@ class BranchController extends Controller
 
     public function create()
     {
-        return view('super.branch.create');
+        $ddiCodes = Storage::disk('local')->get('country-calling-codes.min.json');
+        $ddiCodes = json_decode($ddiCodes, true);
+
+        return view('super.branch.create')->with(compact('ddiCodes'));;
     }
 
     public function store(Request $request)
@@ -42,8 +46,8 @@ class BranchController extends Controller
             'number'=>'required|numeric',
             'complement'=>'required|string',
             'street'=>'required|string',
-            'ddd1'=>'required|digits:3',
-            'ddd2'=>'required|digits:3',
+            'ddd1'=>'required|digits:2',
+            'ddd2'=>'required|digits:2',
             'telephone1'=>'required|numeric',
             'telephone2'=>'required|numeric'
         ]);
@@ -84,11 +88,14 @@ class BranchController extends Controller
 
     public function edit($id)
     {
+
         $branch = Branch::find($id);
         if($branch == null){
             return redirect()->route('super.denied');
         }else{
-            return view('super.branch.edit', compact('branch'));
+            $ddiCodes = Storage::disk('local')->get('country-calling-codes.min.json');
+            $ddiCodes = json_decode($ddiCodes, true);
+            return view('super.branch.edit', compact('branch'))->with(compact('ddiCodes'));
         }
     }
 
@@ -109,8 +116,8 @@ class BranchController extends Controller
             'number'=>'required|numeric',
             'complement'=>'required|string',
             'street'=>'required|string',
-            'ddd1'=>'required|digits:3',
-            'ddd2'=>'required|digits:3',
+            'ddd1'=>'required|digits:2',
+            'ddd2'=>'required|digits:2',
             'telephone1'=>'required|numeric',
             'telephone2'=>'required|numeric'
         ]);

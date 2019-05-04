@@ -58,8 +58,6 @@ Route::get('/super/user/{id}/edit', 'UserController@edit')->name('user.edit');
 Route::post('/super/user/update', 'UserController@update')->name('user.update');
 Route::post('/super/user/delete', 'UserController@destroy')->name('user.delete');
 Route::post('/super/user/list', 'UserController@search')->name('user.search');
-
-
 //Route::put('/admin/affiliated/{id}/update', 'AffiliatedController@update')->name('affiliated.update');
 
 //Route::get('/admin/affiliated/{id}/editar', 'AffiliatedController@editar')->name('affiliated.editar');

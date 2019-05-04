@@ -227,6 +227,18 @@
                         <div class="col-sm-2 offset-md-3">
                             <div class="card border-dark">
                                 <div class="card-body ">
+                                    <h5 class="card-title">DDI:</h5>
+                                    <p class="card-text">
+                                        @isset($affiliated->telephones[0]->ddi)
+                                            {{$affiliated->telephones[0]->ddi}}
+                                        @endisset
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
+                            <div class="card border-dark">
+                                <div class="card-body ">
                                     <h5 class="card-title">DDD:</h5>
                                     <p class="card-text">
                                         @isset($affiliated->telephones[0]->ddd)
@@ -256,6 +268,18 @@
                     </div>
                     <div class="row">
                         <div class="col-sm-2 offset-md-3">
+                            <div class="card border-dark">
+                                <div class="card-body ">
+                                    <h5 class="card-title">DDI:</h5>
+                                    <p class="card-text">
+                                        @isset($affiliated->telephones[0]->ddi)
+                                            {{$affiliated->telephones[0]->ddi}}
+                                        @endisset
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-2">
                             <div class="card border-dark">
                                 <div class="card-body ">
                                     <h5 class="card-title">DDD:</h5>

@@ -34,10 +34,12 @@ class AffiliatesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='81';
         $telephone->number='34323432';
+        $telephone->ddi='55';
         $affiliated1->telephones()->save($telephone);
         $telephone = new Telephone();
         $telephone->ddd='81';
         $telephone->number='34323333';
+        $telephone->ddi='55';
         $affiliated1->telephones()->save($telephone);
         
 
@@ -55,10 +57,12 @@ class AffiliatesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='81';
         $telephone->number='30303030';
+        $telephone->ddi='55';
         $affiliated2->telephones()->save($telephone);
         $telephone = new Telephone();
         $telephone->ddd='81';
         $telephone->number='34324040';
+        $telephone->ddi='55';
         $affiliated2->telephones()->save($telephone);
 
         $affiliated3 = Affiliated::create(['name'=> 'beltrano', 'cpf'=>'1234567888', 'sex'=>'Homem', 'email'=>'beltrano@gmail.com', 'branch_id'=> $branch1->id, 'siape'=>'35', 'rg'=>'1234765', 'maritalStat'=>'Solteiro', 'educationDegree'=>'Bacharelando', 'workDegree'=>'1', 'contribution'=> 3225]);
@@ -75,6 +79,7 @@ class AffiliatesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='80';
         $telephone->number='33332233';
+        $telephone->ddi='55';
         $affiliated3->telephones()->save($telephone);
 
         $affiliated4 = Affiliated::create(['name'=> 'frusteca', 'cpf'=>'1234567889', 'sex'=>'Mulher', 'email'=>'frusteca@gmail.com', 'branch_id'=> $branch2->id, 'siape'=>'47', 'rg'=>'4321567', 'maritalStat'=>'Casado', 'educationDegree'=>'Doutorando', 'workDegree'=>'3', 'contribution'=> 9999]);
@@ -91,6 +96,7 @@ class AffiliatesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='80';
         $telephone->number='55552222';
+        $telephone->ddi='55';
         $affiliated4->telephones()->save($telephone);
 
         $affiliated5 = Affiliated::create(['name'=> 'astolfo', 'cpf'=>'1234567222', 'sex'=>'Homem', 'email'=>'astolfo@gmail.com', 'branch_id'=> $branch2->id, 'siape'=>'93', 'rg'=>'1233321', 'maritalStat'=>'Solteiro', 'educationDegree'=>'Pós-Graduado', 'workDegree'=>'2', 'contribution'=> 4500]);
@@ -107,6 +113,7 @@ class AffiliatesSeeder extends Seeder
         $telephone = new Telephone();
         $telephone->ddd='61';
         $telephone->number='12344321';
+        $telephone->ddi='55';
         $affiliated5->telephones()->save($telephone);
         
     }

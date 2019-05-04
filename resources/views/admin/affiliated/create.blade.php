@@ -299,12 +299,21 @@
                         class="tab-pane fade" id="telephone-area"
                         role="tabpanel" aria-labelledby="telephone-tab">
                         <div class="row">
-                            <div class="col-sm-4 offset-md-3" style="margin-top:10px;">
+                            <div class="col-sm-4 offset-md-1" style="margin-top:10px;">
                                 <h5>Telefone 1</h5>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-1 offset-md-3">
+                            <div class="col-sm-2 offset-md-1">
+                                <label class=" col-form-label text-md-right">DDI: </label>
+                                <select id="ddi1" class="form-control" name="ddi1">
+                                    @foreach($ddiCodes as $ddi)
+                                    <option  @if (old('ddi1') == $ddi["callingCode"]) selected="selected" @endif
+                                            value={{$ddi["callingCode"]}}>{{$ddi["callingCode"]}} {{$ddi["name"]}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
                                 <label class=" col-form-label text-md-right">DDD: </label>
                                 <input
                                     id="ddd1" type="text"
@@ -331,12 +340,21 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-4 offset-md-3" style="margin-top:10px;">
+                            <div class="col-sm-4 offset-md-1" style="margin-top:10px;">
                                 <h5>Telefone 2</h5>
                             </div>
                         </div>
                         <div class="form-group row">
-                            <div class="col-sm-1 offset-md-3">
+                            <div class="col-sm-2 offset-md-1">
+                                <label class=" col-form-label text-md-right">DDI: </label>
+                                <select id="ddi2" class="form-control" name="ddi2">
+                                    @foreach($ddiCodes as $ddi)
+                                    <option  @if (old('ddi2') == $ddi["callingCode"]) selected="selected" @endif
+                                            value={{$ddi["callingCode"]}}>{{$ddi["callingCode"]}} {{$ddi["name"]}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
                                 <label class=" col-form-label text-md-right">DDD: </label>
                                 <input
                                     id="ddd2" type="text"

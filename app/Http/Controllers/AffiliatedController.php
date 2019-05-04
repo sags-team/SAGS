@@ -7,6 +7,7 @@ use App\Affiliated;
 use App\Address;
 use App\Telephone;
 use Auth;
+use Storage;
 
 class AffiliatedController extends Controller
 {
@@ -19,7 +20,7 @@ class AffiliatedController extends Controller
 
     public function store(Request $request)
     {
-        
+
         $request->merge(['contribution' => preg_replace('/\D/', '', $request->input('contribution'))]);
         $request->validate([
             'name'=>'required|min:5|string',
@@ -36,8 +37,8 @@ class AffiliatedController extends Controller
             'number'=>'required|numeric',
             'complement'=>'required|string',
             'street'=>'required|string',
-            'ddd1'=>'required|digits:3',
-            'ddd2'=>'required|digits:3',
+            'ddd1'=>'required|digits:2',
+            'ddd2'=>'required|digits:2',
             'telephone1'=>'required|numeric',
             'telephone2'=>'required|numeric'
         ]);
@@ -57,9 +58,11 @@ class AffiliatedController extends Controller
             $telephone1 = new Telephone();
             $telephone1->ddd = $request->input('ddd1');
             $telephone1->number = $request->input('telephone1');
+            $telephone1->ddi = $request->input('ddi1');
             $telephone2 = new Telephone();
             $telephone2->ddd = $request->input('ddd2');
             $telephone2->number = $request->input('telephone2');
+            $telephone2->ddi = $request->input('ddi2');
 
             $affiliatedNew->save();
             $affiliatedNew->address()->save($address);
@@ -77,8 +80,11 @@ class AffiliatedController extends Controller
 
     public function edit($id)
     {
+        $ddiCodes = Storage::disk('local')->get('country-calling-codes.min.json');
+        $ddiCodes = json_decode($ddiCodes, true);
+
         $affiliated = Affiliated::find($id);
-        return view('admin.affiliated.edit', compact('affiliated'));
+        return view('admin.affiliated.edit', compact('affiliated'))->with(compact('ddiCodes'));
     }
 
     public function update(Request $request)
@@ -99,8 +105,8 @@ class AffiliatedController extends Controller
             'number'=>'required|numeric',
             'complement'=>'required|string',
             'street'=>'required|string',
-            'ddd1'=>'required|digits:3',
-            'ddd2'=>'required|digits:3',
+            'ddd1'=>'required|digits:2',
+            'ddd2'=>'required|digits:2',
             'telephone1'=>'required|numeric',
             'telephone2'=>'required|numeric'
         ]);

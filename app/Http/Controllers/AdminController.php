@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Affiliated;
 use Auth;
+use Storage;
 
 class AdminController extends Controller
 {
@@ -38,7 +39,10 @@ class AdminController extends Controller
     }
 
     public function createAffiliated(){
-        return view('admin.affiliated.create');
+        $ddiCodes = Storage::disk('local')->get('country-calling-codes.min.json');
+        $ddiCodes = json_decode($ddiCodes, true);
+
+        return view('admin.affiliated.create')->with(compact('ddiCodes'));
     }
 
     public function showAffiliates(){
