@@ -31,7 +31,10 @@ Route::get('/admin/affiliated/{id}/show','AffiliatedController@show')->name('aff
 Route::get('/admin/affiliated/list', 'AdminController@showAffiliates')->name('affiliates');
 Route::post('/admin/affiliated/list', 'AdminController@searchAffiliates')->name('affiliates.search');
 
+//Rotas para uso de BankInfo
 Route::get('/admin/branch/bankInfo', 'BankInfoController@list')->name('branch.bankInfo');
+Route::get('/admin/branch/bankInfo/create', 'BankInfoController@create')->name('bankInfo.create');
+Route::post('/admin/branch/bankInfo/store', 'BankInfoController@store')->name('bankinfo.store');
 
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');
