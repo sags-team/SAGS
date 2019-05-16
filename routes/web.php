@@ -31,6 +31,8 @@ Route::get('/admin/affiliated/{id}/show','AffiliatedController@show')->name('aff
 Route::get('/admin/affiliated/list', 'AdminController@showAffiliates')->name('affiliates');
 Route::post('/admin/affiliated/list', 'AdminController@searchAffiliates')->name('affiliates.search');
 
+Route::get('/admin/branch/bankInfo', 'BankInfoController@list')->name('branch.bankInfo');
+
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');
 //fim de rotas referentes ao administrador
@@ -43,7 +45,6 @@ Route::get('/super/branch/{id}/show', 'BranchController@show')->name('branch.sho
 Route::get('/super/branch/{id}/edit', 'BranchController@edit')->name('branch.edit');
 Route::get('/super/branch/list', 'BranchController@list')->name('branch.list');
 Route::post('/super/branch/list', 'BranchController@search')->name('branch.search');
-
 Route::post('/super/branch/update', 'BranchController@update')->name('branch.update');
 
 
