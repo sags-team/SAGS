@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Auth;
 use App\User;
+use Storage;
 
 class HomeController extends Controller
 {
@@ -52,5 +53,15 @@ class HomeController extends Controller
         $name = "SAGS - Sistema de Administração e Gerenciamento de Sindicatos";
         $version = "0.1";
         return response()->json(compact('name', 'version'));
+    }
+
+    public function fileTest()
+    {
+        //$content = "A1CS123D              SAGS                104";
+        //Storage::put('file.txt', $content);
+        
+        //Storage::delete('file.txt');
+        
+        //return Storage::download('file.txt');
     }
 }

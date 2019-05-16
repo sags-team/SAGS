@@ -25,4 +25,9 @@ class Branch extends Model
     public function users(){
         return $this->hasMany('App\User', 'branch_id');
     }
+
+    public function bankInfos()
+    {
+        return $this->hasMany('App\BankInfo', 'branch_id');
+    }
 }

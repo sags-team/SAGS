@@ -62,6 +62,8 @@ Route::post('/super/user/list', 'UserController@search')->name('user.search');
 
 //Route::get('/admin/affiliated/{id}/editar', 'AffiliatedController@editar')->name('affiliated.editar');
 
+Route::get('/teste', 'HomeController@fileTest')->name('testando');
+
 /*
 Route::get('/admin', function(){
     return "Voce é administrador";
