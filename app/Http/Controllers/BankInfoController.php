@@ -47,6 +47,73 @@ class BankInfoController extends Controller
         return redirect()->route('branch.bankInfo')->with(compact('bankInfos'));
     }
 
+    public function edit($id)
+    {
+        $bankInfo = BankInfo::find($id);
+        $user = Auth::user();
+        if($bankInfo == null){
+            return redirect()->route('admin.denied');
+        }else if($bankInfo->branch->id != $user->branch->id){
+            return redirect()->route('admin.denied');
+        }
+
+        return view('admin.bankInfo.edit')->with(compact('bankInfo'));
+    }
+
+    public function update(Request $request)
+    {
+        $request->validate([
+            'agreementCode'=>'required|min:6|string',
+            'branchName'=>'required|max:20|string'
+        ]);
+        $info = BankInfo::find($request->input('bankInfo_id'));
+        $user = Auth::user();
+        if($info){
+            if($info->branch->id == $user->branch->id){
+                $info->agreementCode = $request->input('agreementCode');
+                $info->branchName = $request->input('branchName');
+                if($info->name != $request->input('name')){
+                    $info->fileCounter = 0;
+                    $info->name = $request->input('name');
+                    $info->bankCode = $this->bankCode($request->input('name'));
+                }
+
+                $bankInfos = $user->branch->bankInfos;
+                foreach($bankInfos as $infos){
+                    if($infos->id != $info->id){
+                        if($infos->name == $info->name){
+                            return redirect()->route('branch.bankInfo')->with('success','Informações deste banco ja cadastrada');
+                        }
+                    }
+                }
+                $info->save();
+                $bankInfos = $user->branch->bankInfos;
+                return redirect()->route('branch.bankInfo')->with(compact('bankInfos'));
+            }else{
+                return redirect()->route('admin.denied');
+            }
+        }else{
+            return redirect()->route('admin.denied');
+        }
+    }
+
+    public function destroy(Request $request)
+    {
+        $user = Auth::user();
+        $info = BankInfo::find($request->input('id'));
+        if($info){
+            if($user->branch->id != $info->branch->id){
+                return redirect()->route('admin.denied');
+            }
+
+            $info->delete();
+            $bankInfos = $user->branch->bankInfos;
+            return redirect()->route('branch.bankInfo')->with(compact('bankInfos'));
+        }else{
+            return redirect()->route('admin.denied');
+        }
+    }
+
     public function list()
     {
         $user = Auth::user();

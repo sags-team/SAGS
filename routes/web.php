@@ -35,6 +35,9 @@ Route::post('/admin/affiliated/list', 'AdminController@searchAffiliates')->name(
 Route::get('/admin/branch/bankInfo', 'BankInfoController@list')->name('branch.bankInfo');
 Route::get('/admin/branch/bankInfo/create', 'BankInfoController@create')->name('bankInfo.create');
 Route::post('/admin/branch/bankInfo/store', 'BankInfoController@store')->name('bankinfo.store');
+Route::get('/admin/branch/bankInfo/{id}/edit', 'BankInfoController@edit')->name('bankinfo.edit');
+route::post('/admin/branch/bankInfo/update', 'BankInfoController@update')->name('bankinfo.update');
+route::post('/admin/branch/bankInfo/delete', 'BankInfoController@destroy')->name('bankinfo.delete');
 
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');

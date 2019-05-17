@@ -78,12 +78,25 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="row top-margin-row">
+                            <div class="col-sm-1 offset-md-5">
+                                <a href="{{ route('bankinfo.edit', $infos->id)}}" class="btn btn-primary">Editar</a>
+                            </div>
+                            <div class="col-sm-1">        
+                                <form action="{{route('bankinfo.delete')}}" method="post">
+                                    @csrf
+                                    <input type="hidden" name="id" value="{{$infos->id}}" />
+                                    <button class="btn btn-danger" type="submit" onclick="this.disabled=true;this.form.submit();">Deletar</button>
+                                </form>
+                                    
+                            </div>
+                        </div>
                     </div>
                 @endforeach
                 </div>
             @endif
             <div class="row top-margin-row">
-                <div class="col-sm-4 offset-md-4">
+                <div class="col-sm-4 offset-md-4" style="padding-left:70px;">
                     <a href="{{ route('bankInfo.create')}}" class="btn btn-success">Adicionar Informações bancárias</a>
                 </div>
             </div>
