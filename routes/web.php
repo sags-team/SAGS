@@ -39,6 +39,12 @@ Route::get('/admin/branch/bankInfo/{id}/edit', 'BankInfoController@edit')->name(
 route::post('/admin/branch/bankInfo/update', 'BankInfoController@update')->name('bankinfo.update');
 route::post('/admin/branch/bankInfo/delete', 'BankInfoController@destroy')->name('bankinfo.delete');
 
+//Rotas para criação de arquivos
+route::get('/admin/branch/files', 'FileController@create')->name('file.create');
+route::post('/admin/branch/files/generate', 'FileController@generate')->name('file.generate');
+
+
+
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
 Route::get('/admin/alreadyExist', 'AdminController@alreadyExist')->name('admin.exist');
 //fim de rotas referentes ao administrador
