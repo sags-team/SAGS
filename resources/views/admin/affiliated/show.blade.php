@@ -393,7 +393,7 @@
             @if($affiliated->bankAccount == null)
             <div class="row top-margin-row">
                 <div class="col-sm-3 offset-md-4">
-                    <a href="{{ route('bankaccount.create')}}" class="btn btn-success" style="margin-left:30px;">Adicionar informações bancárias</a>
+                    <a href="{{ route('bankaccount.create', $affiliated->id)}}" class="btn btn-success" style="margin-left:30px;">Adicionar informações bancárias</a>
                 </div>
             </div>
             @endif

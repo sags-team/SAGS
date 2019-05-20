@@ -44,7 +44,8 @@ route::get('/admin/branch/files', 'FileController@create')->name('file.create');
 route::post('/admin/branch/files/generate', 'FileController@generate')->name('file.generate');
 
 //Rotas para criação de informações bancárias
-route::get('/admin/affiliated/bankAccount/create', 'BankAccountController@create')->name('bankaccount.create');
+route::get('/admin/affiliated/bankAccount/{id}/create', 'BankAccountController@create')->name('bankaccount.create');
+route::post('/admin/affiliated/bankAccount/store', 'BankAccountController@store')->name('bankaccount.store');
 route::get('/admin/affiliated/bankAccount/{id}/edit', 'BankAccountController@edit')->name('bankaccount.edit');
 
 
