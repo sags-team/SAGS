@@ -21,4 +21,8 @@ class Affiliated extends Model
     public function telephones(){
         return $this->morphMany('App\Telephone', 'telephoneable');
     }
+
+    public function bankAccount(){
+        return $this->hasOne('App\BankAccount', 'affiliated_id');
+    }
 }
