@@ -32,6 +32,16 @@
                         Telefones
                     </a>
                 </li>
+                @if($affiliated->bankAccount != null)
+                <li class="nav-item">
+                    <a 
+                        class="nav-link" id="bank-tab"
+                        data-toggle="tab" href="#bank-area" role="tab"
+                        aria-controls="bank" aria-selected="false">
+                        Informações bancárias
+                    </a>
+                </li>
+                @endif
             </ul>
             <div class="tab-content" id="myTabContent">
                 <!-- PRIMEIRA DIV ---- REFERENTE A INFORMAÇÕES BÁSICAS -->
@@ -305,7 +315,88 @@
                         </div>
                     </div>
                 </div>
+                <!--  QUARTA DIV REFERENTE A INFORMAÇÕES BANCÁRIAS -->
+                @if($affiliated->bankAccount != null)
+                <div 
+                    class="tab-pane fade" id="bank-area"
+                    role="tabpanel" aria-labelledby="bank-tab">
+                    <div class="row top-margin-row">
+                        <div class="col-sm-4">
+                            <div class="card border-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Nome do Banco:</h5>
+                                    <p class="card-text">{{ $affiliated->bankAccount->displayName }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="card border-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Agência:</h5>
+                                    <p class="card-text">{{ $affiliated->bankAccount->agency }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">    
+                            <div class="card border-dark">
+                                <div class="card-body ">
+                                    <h5 class="card-title">Número:</h5>
+                                    <p class="card-text">{{ $affiliated->bankAccount->accountNumber }}</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row top-margin-row">
+                        <div class="col-sm-4">
+                            <div class="card border-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Código de operação:</h5>
+                                    <p class="card-text">{{ $affiliated->bankAccount->operationCode }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">
+                            <div class="card border-dark">
+                                <div class="card-body">
+                                    <h5 class="card-title">Digito de verificação:</h5>
+                                    <p class="card-text">{{ $affiliated->bankAccount->vdNumber }}</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-4">    
+                            <div class="card border-dark">
+                                <div class="card-body ">
+                                    <h5 class="card-title">Débito Ativado pelo banco:</h5>
+                                    <p class="card-text">
+                                        @if($affiliated->bankAccount->active == true)
+                                            Sim
+                                        @else
+                                            Não
+                                        @endif
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row top-margin-row">
+                        <div class="col-sm-3 offset-md-4">
+                            <a href="{{ route('bankaccount.edit', $affiliated->bankAccount->id)}}" class="btn btn-primary" style="margin-left:30px;">Alterar informações bancárias</a>
+                        </div>
+                    </div>
+                </div>
+                @endif
             </div>
+            @if($affiliated->bankAccount == null)
+            <div class="row top-margin-row">
+                <div class="col-sm-3 offset-md-4">
+                    <a href="{{ route('bankaccount.create')}}" class="btn btn-success" style="margin-left:30px;">Adicionar informações bancárias</a>
+                </div>
+            </div>
+            @endif
         </div>
     </div>
 </div>

@@ -43,6 +43,9 @@ route::post('/admin/branch/bankInfo/delete', 'BankInfoController@destroy')->name
 route::get('/admin/branch/files', 'FileController@create')->name('file.create');
 route::post('/admin/branch/files/generate', 'FileController@generate')->name('file.generate');
 
+//Rotas para criação de informações bancárias
+route::get('/admin/affiliated/bankAccount/create', 'BankAccountController@create')->name('bankaccount.create');
+route::get('/admin/affiliated/bankAccount/{id}/edit', 'BankAccountController@edit')->name('bankaccount.edit');
 
 
 Route::get('/admin/denied', 'AdminController@denied')->name('admin.denied');
