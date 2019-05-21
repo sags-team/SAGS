@@ -382,11 +382,13 @@
                             </div>
                         </div>
                     </div>
+                    @if($affiliated->bankAccount->active == false)
                     <div class="row top-margin-row">
                         <div class="col-sm-3 offset-md-4">
                             <a href="{{ route('bankaccount.edit', $affiliated->bankAccount->id)}}" class="btn btn-primary" style="margin-left:30px;">Alterar informações bancárias</a>
                         </div>
                     </div>
+                    @endif
                 </div>
                 @endif
             </div>

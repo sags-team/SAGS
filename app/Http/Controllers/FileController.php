@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Auth;
 use App\User;
 use App\BankInfo;
+use App\Affiliated;
 use Storage;
 
 class FileController extends Controller
@@ -29,6 +30,7 @@ class FileController extends Controller
         $bankInfo = BankInfo::where('branch_id', $user->branch->id)
         ->where('name', $request->input('name'))->first();
         
+        $affiliates = Affiliated::where('branch_id', $user->branch->id)->get();
         $content = "";
 
         
@@ -66,20 +68,58 @@ class FileController extends Controller
         $content = $content.$filler;
         //Fim da geração do Registro de HEADER
 
+        $totalRegisters = 2;
+        $totalValue = 0;
 
-
-
+        foreach($affiliates as $affiliated){
+            if($affiliated->bankAccount->active && $affiliated->bankAccount->name == $bankInfo->name){
+                //E.01 Código do registro = E
+                $EContent = "E";
+                //E.02 Identificação do cliente na empresa
+                $affiliated_id = str_pad($affiliated->id, 25, " ");
+                $EContent = $EContent.$affiliated_id;
+                //E.03 Agência para débito
+                $EContent = $EContent.$affiliated->bankAccount->agency;
+                //E.04 Identificação do cliente no banco
+                $affiliatedBankId = $affiliated->bankAccount->operationCode.$affiliated->bankAccount->accountNumber;
+                $affiliatedBankId = $affiliatedBankId.$affiliated->bankAccount->vdNumber;
+                $affiliatedBankId = str_pad($affiliatedBankId, 14, " ");
+                $EContent = $EContent.$affiliatedBankId;
+                //E.05 Data de vencimento
+                $date = date('Ymd', strtotime('+7 days'));
+                $EContent = $EContent.$date;
+                //E.06 Valor de débito
+                $totalValue = $totalValue + $affiliated->contribution; //Somar para por no trailler
+                $value = $affiliated->contribution;
+                $value = str_pad($value, 15, "0", STR_PAD_LEFT);
+                $EContent = $EContent.$value;
+                //E.07 Código da moeda
+                $EContent = $EContent.'03';
+                //E.08 Livre para uso da empresa
+                $freeContent = "ConteudoEmpresa";
+                $freeContent = str_pad($freeContent, 60, " ");
+                $EContent = $EContent.$freeContent;
+                //E.09 Reservado para o futuro
+                $filler = str_pad("", 20, " ");
+                $EContent = $EContent.$filler;
+                //E.10 Código de movimento
+                $EContent = $EContent.'0';
+                //Fim do Registro E
+                $totalRegisters = $totalRegisters + 1;
+                $content = $content.$EContent;
+            }
+        }
 
         //Criando o Trailler do arquivo
         //Z.01 Código de registro = "Z";
         $content = $content."Z";
         //Z.02 Total de registros do arquivo
-        $totalRegisters = "2";
+        
         $totalRegisters = str_pad($totalRegisters, 6, "0", STR_PAD_LEFT);
         $content = $content.$totalRegisters;
         //Z.03 Valor total  dos campos E.06 e F.06 para arquivos de débito
-        $total = "";
-        $total = str_pad($total, 17, "0", STR_PAD_LEFT);
+       
+        $total = str_pad($totalValue, 17, "0", STR_PAD_LEFT);
         $content = $content.$total;
         //Z.04 Mesmo do Z.03 só que para Crédito
         $total = "";
@@ -89,8 +129,12 @@ class FileController extends Controller
         $filler = str_pad("", 109, " ");
         $content = $content.$filler;
         
-        Storage::put('file.txt', $content);
-        return Storage::download('file.txt');
+        Storage::disk('file')->put('COV'.date('m').'1'.'.TXT', $content);
+        $bankInfo->fileCounter = $bankInfo->fileCounter + 1;
+        $bankInfo->save();
+        $downloadFile = public_path().'\files\\'.'COV'.date('m').'1'.'.TXT';
+        return response()->download($downloadFile)->deleteFileAfterSend(true);
+        //return Storage::download('file.txt');
         //Storage::delete('file.txt');
     }
 }

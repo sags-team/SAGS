@@ -70,6 +70,10 @@
                         <li class="nav-item {{ Request::is('admin/branch/bankInfo') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('branch.bankInfo') }}">Info. Bancária</a>
                         </li>
+                        <a class="navbar-brand font-size-sidebar-brand text-white" >Arquivos</a>
+                        <li class="nav-item {{ Request::is('/admin/branch/files') ? 'active background-selection' : '' }}">
+                            <a class="nav-link font-size-sidebar-options" href="{{ route('file.create') }}">Arq. Débito</a>
+                        </li>
                         <a class="navbar-brand font-size-sidebar-brand text-white" >Filiados</a>
                         <li class="nav-item {{ Request::is('admin/affiliated/create') ? 'active background-selection' : '' }}">
                             <a class="nav-link font-size-sidebar-options" href="{{ route('affiliated.create') }}">Novo filiado</a>

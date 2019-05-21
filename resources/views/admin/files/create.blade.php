@@ -4,7 +4,7 @@
 <div class="container initial-space">
     <div class="card uper">
         <div class="card-header">
-            Geração de Arquivos:
+            Geração de Arquivos de Débito:
             @if(session()->has('success'))
                 <div class="alert alert-danger" role="alert">
                     {{session('success')}}
@@ -21,14 +21,6 @@
                             @foreach($bankInfos as $infos)
                                 <option @if (old('name') == $infos->name) selected="selected" @endif>{{$infos->name}}</option>
                             @endforeach
-                        </select>
-                    </div>
-
-                    <div class="col-sm-4">
-                        <label class=" col-form-label text-md-right">Tipo de arquivo ? </label>
-                        <select id="type" class="form-control" name="type">
-                            <option  @if (old('type') == 'Cadastrar Usuarios') selected="selected" @endif>Cadastrar Usuarios</option>
-                            <option  @if (old('type') == 'Debito') selected="selected" @endif>Debito</option>
                         </select>
                     </div>
                 </div>
