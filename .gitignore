@@ -1,34 +1,21 @@
-<<<<<<< HEAD
+# This is from laravel Project
 /node_modules
 /public/hot
 /public/storage
 /storage/*.key
 /vendor
 .env
+.env.backup
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
-=======
-vendor/
-node_modules/
-npm-debug.log
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
-
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
-storage/*.key
+# others
 .env.*.php
 .env.php
-.env
-Homestead.yaml
-Homestead.json
+.code
 
 # Rocketeer PHP task runner and deployment package. https://github.com/rocketeers/rocketeer
 .rocketeer/
->>>>>>> 893579e91f7cc4ffd19b7b2ea52240387db5ad0c
