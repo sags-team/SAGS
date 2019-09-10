@@ -14,6 +14,7 @@
 Route::get('/', 'HomeController@index')->name('index');
 Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
 Route::get('/super/home', 'SuperController@home')->name('super.home');
+Route::get('/user/home', 'HomeController@user')->name('user.home');
 
 Auth::routes();
 // Rotas referentes ao administrador

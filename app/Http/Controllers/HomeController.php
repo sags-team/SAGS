@@ -24,7 +24,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    
+
     public function index()
     {
         $user = Auth::user();
@@ -36,11 +36,13 @@ class HomeController extends Controller
 
             } else if ($user->hasRole('Super')) {
                 return redirect()->route('super.home');
+            } else {
+                return redirect()->route('user.home');
             }
         }
 
     }
-    
+
     public function teste(){
         return view('layouts.layout');
     }
@@ -55,13 +57,17 @@ class HomeController extends Controller
         return response()->json(compact('name', 'version'));
     }
 
+    public function user()
+    {
+        return view('user.index');
+    }
     public function fileTest()
     {
         //$content = "A1CS123D              SAGS                104";
         //Storage::put('file.txt', $content);
-        
+
         //Storage::delete('file.txt');
-        
+
         //return Storage::download('file.txt');
     }
 }
