@@ -17,8 +17,10 @@ class AccessAdmin
     public function handle($request, Closure $next)
     {
         if(Auth::user()->hasRole('Administrador sindicato')){
+            dd('deu true para admin');
             return $next($request);
         }
+        dd('deu false para admin');
         return redirect()->route('index');
     }
 }
