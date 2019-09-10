@@ -28,8 +28,7 @@ class LoginController extends Controller
      */
     //protected $redirectTo = '/admin/home/';
     public function redirectTo(){
-        //$user = Auth::user();
-        /*
+        $user = Auth::user();
         if($user->hasRole('super')){
             return '/super/home/';
         }elseif($user->hasRole('Administrador sindicato')){
@@ -37,8 +36,6 @@ class LoginController extends Controller
         }else{
             return '/user/home/';
         }
-        */
-        return '/';
     }
     /**
      * Create a new controller instance.

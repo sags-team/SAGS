@@ -33,7 +33,6 @@ class HomeController extends Controller
         } else {
             if ($user->hasRole('Administrador sindicato')) {
                 return redirect()->route('admin.home');
-
             } else if ($user->hasRole('Super')) {
                 return redirect()->route('super.home');
             } else {

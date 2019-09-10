@@ -18,10 +18,11 @@ class AdminController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('auth.admin');
+        //$this->middleware('auth.admin');
     }
 
     public function admin(){
+        dd("Admin home");
         return view('admin.home');
     }
 
@@ -50,7 +51,7 @@ class AdminController extends Controller
         $affiliates = $branch->affiliates()->paginate(5);
         return view('admin.showAffiliated')->with('affiliates', $affiliates);
     }
-    
+
     public function searchAffiliates(Request $request){
         $search = $request->input('search');
         $admin = Auth::user();

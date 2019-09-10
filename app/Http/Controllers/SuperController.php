@@ -9,10 +9,11 @@ class SuperController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-        $this->middleware('auth.super');
+        //$this->middleware('auth.super');
     }
 
     public function home(){
+        dd("Super home");
         return view('super.home');
     }
 
@@ -20,5 +21,5 @@ class SuperController extends Controller
     {
         return view('super.denied');
     }
-    
+
 }
