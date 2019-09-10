@@ -61,6 +61,7 @@ class HomeController extends Controller
     {
         return view('user.index');
     }
+
     public function fileTest()
     {
         //$content = "A1CS123D              SAGS                104";
