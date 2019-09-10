@@ -13,7 +13,6 @@ class SuperController extends Controller
     }
 
     public function home(){
-        dd("Super home");
         return view('super.home');
     }
 

@@ -22,7 +22,6 @@ class AdminController extends Controller
     }
 
     public function admin(){
-        dd("Admin home");
         return view('admin.home');
     }
 
