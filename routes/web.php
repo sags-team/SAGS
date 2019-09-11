@@ -11,7 +11,6 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('index');
 Route::get('/admin/home', 'AdminController@admin')->name('admin.home');
 Route::get('/super/home', 'SuperController@home')->name('super.home');
 Route::get('/user/home', 'HomeController@user')->name('user.home');
@@ -91,3 +90,5 @@ Route::get('/super', function(){
     return "voce é Super";
 })->middleware(['auth', 'auth.super']);
 */
+Route::get('/welcome', 'HomeController@welcome')->name('welcome');
+Route::get('/', 'HomeController@index')->name('index');

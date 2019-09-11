@@ -70,4 +70,9 @@ class HomeController extends Controller
 
         //return Storage::download('file.txt');
     }
+
+    public function welcome()
+    {
+        return view('welcome');
+    }
 }
