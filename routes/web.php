@@ -63,7 +63,6 @@ Route::get('/super/branch/list', 'BranchController@list')->name('branch.list');
 Route::post('/super/branch/list', 'BranchController@search')->name('branch.search');
 Route::post('/super/branch/update', 'BranchController@update')->name('branch.update');
 
-
 Route::get('/super/alreadyExist', 'BranchController@alreadyExists')->name('branch.alreadyExists');
 Route::get('/super/denied', 'SuperController@denied')->name('super.denied');
 //Rotas para CRUD de usuário
