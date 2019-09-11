@@ -16,7 +16,7 @@ class AccessSuper
      */
     public function handle($request, Closure $next)
     {
-        if(!Auth::user()->hasRole('super')){
+        if(!Auth::user()->hasRole('Super')){
             return redirect()->route('index');
         }
 
