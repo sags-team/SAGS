@@ -16,10 +16,10 @@ class AccessSuper
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->hasRole('super')){
-            return $next($request);
+        if(!Auth::user()->hasRole('super')){
+            return redirect()->route('index');
         }
 
-        return redirect()->route('index');
+        return $next($request);
     }
 }

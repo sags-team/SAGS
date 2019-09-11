@@ -16,9 +16,9 @@ class AccessAdmin
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->hasRole('Administrador sindicato')){
-            return $next($request);
+        if(!Auth::user()->hasRole('Administrador sindicato')){
+            return redirect()->route('index');
         }
-        return redirect()->route('index');
+        return $next($request);
     }
 }
